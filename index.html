@@ -55,9 +55,10 @@
         <img v-for="(destination, i) in destinations" :src="`img/${destination.image}`" alt="{{destination.name}}" :class="{active: i === currentIndex}" @click="setCurrentIndex(i)">
       </div>
 
-      <!-- <div class="autoplay-controls">
+      <!-- autoplay button -->
+      <div class="autoplay-controls">
         <button id="autoplay-button">STOP AUTOPLAY</button>
-      </div> -->
+      </div>
     </div>
   </div>
 </body>

@@ -6,7 +6,8 @@ const { createApp } = Vue;
 const app = createApp ({
     data: () => ({
         destinations,
-        currentIndex: 0
+        currentIndex: 0,
+        autoplay: null
     }),
     computed: {
         lastElementIndex(){
@@ -28,7 +29,18 @@ const app = createApp ({
                 if (this.isLastIndex) this.currentIndex = 0;
                 else this.currentIndex++;
             } else {this.currentIndex = stringa;}
+        },
+        stopAutoplay() {
+            clearInterval(this.autoplay);
+        },
+        startAutoplay() {
+            this.autoplay = setInterval(() => {
+                this.setCurrentIndex("next")
+            }, 2000);
         }
+    },
+    mounted () {
+        this.startAutoplay();
     }
 })
 
