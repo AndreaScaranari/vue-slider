@@ -30,33 +30,35 @@
 <body>
 
   <div class="container">
-    <div id="carousel">
-      <!-- Prev button -->
-      <i id="prev-button" class="bi bi-arrow-left-circle-fill" role="button"></i>
+    <div id="root">
+      <div id="carousel">
+        <!-- Prev button -->
+        <i id="prev-button" class="bi bi-arrow-left-circle-fill" role="button"></i>
 
-      <!-- Gallery -->
-      <div class="gallery">
-        <figure class="active">
-          <figcaption>
-            <h2>Svezia</h2>
-            <h3>Scandinavia's blend of nature and innovation.</h3>
-          </figcaption>
-          <img src="img/01.jpg" alt="Svezia">
-        </figure>
+        <!-- Gallery -->
+        <div class="gallery">
+          <figure v-for="(destination, i) in destinations" v-show="currentIndex === i">
+            <figcaption>
+              <h2>{{destination.name}}</h2>
+              <h3>{{destination.description}}</h3>
+            </figcaption>
+            <img :src="`img/${destination.image}`" alt="{{destination.name}}">
+          </figure>
+        </div>
+
+        <!-- next button -->
+        <i id="next-button" class="bi bi-arrow-right-circle-fill" role="button"></i>
       </div>
 
-      <!-- next button -->
-      <i id="next-button" class="bi bi-arrow-right-circle-fill" role="button"></i>
-    </div>
+      <!-- Thumbnails -->
+      <div id="thumbnails">
+        <img v-for="(destination, i) in destinations" :src="`img/${destination.image}`" alt="{{destination.name}}" :class="{active: i === currentIndex}">
+      </div>
 
-    <!-- Thumbnails -->
-    <div id="thumbnails">
-      <img src="img/01.jpg" alt="Svezia" class="active">
+      <!-- <div class="autoplay-controls">
+        <button id="autoplay-button">STOP AUTOPLAY</button>
+      </div> -->
     </div>
-
-    <!-- <div class="autoplay-controls">
-      <button id="autoplay-button">STOP AUTOPLAY</button>
-    </div> -->
   </div>
 </body>
 
