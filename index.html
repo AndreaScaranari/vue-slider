@@ -37,7 +37,7 @@
 
         <!-- Gallery -->
         <div class="gallery">
-          <figure v-for="(destination, i) in destinations" v-show="currentIndex === i">
+          <figure v-for="(destination, i) in destinations" v-show="currentIndex === i" @mouseenter="stopAutoplay()" @mouseleave="startAutoplay()">
             <figcaption>
               <h2>{{destination.name}}</h2>
               <h3>{{destination.description}}</h3>
@@ -56,9 +56,9 @@
       </div>
 
       <!-- autoplay button -->
-      <div class="autoplay-controls">
+      <!-- <div class="autoplay-controls">
         <button id="autoplay-button">STOP AUTOPLAY</button>
-      </div>
+      </div> -->
     </div>
   </div>
 </body>
